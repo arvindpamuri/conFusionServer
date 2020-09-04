@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 
 const Dishes = require('../models/dishes'); 
 
@@ -45,8 +44,7 @@ dishRouter.route('/')
     .catch((err) => next(err));
 });
 
-dishRouter.route('/:dishId') 
-
+dishRouter.route('/:dishId')
 .get((req,res,next) => {
     Dishes.findById(req.params.dishId)
     .then((dish) => {
@@ -58,7 +56,7 @@ dishRouter.route('/:dishId')
 })
 
 .post((req,res,next) => {
-    res.end('Will add the dish: ' + req.body.name + ' with details: ' + req.body.description);
+    res.end('Post not supported on /dishes: ' + req.params.dishId);
 })
 
 .put((req, res, next) => {
